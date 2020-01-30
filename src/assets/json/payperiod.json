@@ -1,0 +1,85 @@
+[{
+        "id": 1,
+        "beginningDate": "12/21/2019",
+        "endingDate": "01/24/2020",
+        "year": 2020,
+        "numberOfWeeks": 5
+    },
+    {
+        "id": 2,
+        "beginningDate": "01/25/2020",
+        "endingDate": "02/21/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 3,
+        "beginningDate": "02/22/2020",
+        "endingDate": "03/20/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 4,
+        "beginningDate": "03/21/2020",
+        "endingDate": "04/17/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 5,
+        "beginningDate": "04/18/2020",
+        "endingDate": "05/22/2020",
+        "year": 2020,
+        "numberOfWeeks": 5
+    },
+    {
+        "id": 6,
+        "beginningDate": "05/23/2020",
+        "endingDate": "06/19/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 7,
+        "beginningDate": "06/20/2020",
+        "endingDate": "07/24/2020",
+        "year": 2020,
+        "numberOfWeeks": 5
+    },
+    {
+        "id": 8,
+        "beginningDate": "07/25/2020",
+        "endingDate": "08/21/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 9,
+        "beginningDate": "08/22/2020",
+        "endingDate": "09/18/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 10,
+        "beginningDate": "09/19/2020",
+        "endingDate": "10/23/2020",
+        "year": 2020,
+        "numberOfWeeks": 5
+    },
+    {
+        "id": 11,
+        "beginningDate": "10/24/2020",
+        "endingDate": "11/20/2020",
+        "year": 2020,
+        "numberOfWeeks": 4
+    },
+    {
+        "id": 12,
+        "beginningDate": "11/21/2020",
+        "endingDate": "12/25/2020",
+        "year": 2020,
+        "numberOfWeeks": 5
+    }
+]

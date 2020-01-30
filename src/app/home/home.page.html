@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{viewTitle}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+    (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step=" 30" class="calendar"
+    [monthviewDisplayEventTemplate]="template">
+  </calendar>
+  <ng-template #template let-view="view" let-row="row" let-col="col">
+    <div *ngFor="let obj of [view.dates[row*7+col].label] let i = index;">
+      <div *ngFor="let i of [0, 1, 2, 3, 4, 5]" class="calendar-icons">
+        <ion-icon name="sunny" style="margin-top: 5px; color: rgb(252, 235, 7); font-size: 18px;" *ngIf="view.dates[row*7+col].events[i] && view.dates[row*7+col].events[i].shift == 'day'"></ion-icon>
+        <ion-icon name="moon" style="margin-top: 5px; color: #eae3d4; font-size: 18px;" *ngIf="view.dates[row*7+col].events[i] && view.dates[row*7+col].events[i].shift == 'night'"></ion-icon>
+        <ion-icon name="cloudy-night" style="margin-top: 5px; color: #ffffff; font-size: 18px;" *ngIf="view.dates[row*7+col].events[i] && view.dates[row*7+col].events[i].shift == 'hoot'"></ion-icon>
+        <ion-icon name="calendar" style="margin-top: 5px; color: #ffffff; font-size: 18px; " *ngIf="view.dates[row*7+col].events[i] && view.dates[row*7+col].events[i].shift == 'holiday'"></ion-icon>
+        <ion-icon name="medkit" style="margin-top: 5px; color: #ffffff; font-size: 18px; " *ngIf="view.dates[row*7+col].events[i] && view.dates[row*7+col].events[i].shift == 'doctor'"></ion-icon>
+        <ion-icon name="clipboard" style="margin-top: 5px; color: #ffffff; font-size: 18px; " *ngIf="view.dates[row*7+col].events[i] && view.dates[row*7+col].events[i].shift == 'meeting'"></ion-icon>
+      </div>
+      <p>{{obj}}</p>
+    </div>
+  </ng-template>
+
+
+  <ion-row *ngIf="requiredDaysToWork - totalDaysWorked.length > 0 && mustWorkDays < (daysRemaining * 3)" margin
+    text-center>
+    <h5>Need to work <span style="color:#1e51be; font-size: 16px; font-weight: bold;">{{requiredDaysToWork -
+        totalDaysWorked.length}}</span> {{requiredDaysToWork - totalDaysWorked.length == 1 ? 'shift': 'shifts'}} by <b
+        style="color: #333; font-size: 16px;">{{currentPayPeriod.endingDate}}</b></h5>
+    <div class="line">
+      <div class="actualLine"></div>
+      <div class="dot" *ngFor="let day of array">
+        <div class="actualDot" *ngIf="totalDaysWorked.length == day && totalDaysWorked.length != 0"></div>
+        <span *ngIf="totalDaysWorked.length == day && totalDaysWorked.length != 0">{{day}}</span>
+      </div>
+      <div class="requiredDays">{{requiredDaysToWork}}</div>
+    </div>
+  </ion-row>
+  <ion-row style="margin-left: 15px; margin-right: 15px;" *ngIf="mustWorkDays > (daysRemaining * 3)" class="warning-label">
+    <ion-icon name="alert" style="color: #ab3b16"></ion-icon>
+    <h2 text-center text-wrap>Not enough shifts left</h2>
+    <ion-icon name="alert" style="color: #ab3b16"></ion-icon>
+  </ion-row>
+
+
+  <ion-row style="background-color: #b1b0b0; color: white; justify-content: center;" *ngIf="mustWorkDays <= 0"
+    text-center>
+    <h1 text-center text-wrap color="white" style="margin-top: 10px;">Monthly Requirement Met</h1>
+  </ion-row>
+
+  <ion-row margin style="margin-bottom: 0px;" class="primary-buttons">
+    <hr>
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="day" [ngClass]="{active: isActive('day')}" ion-button icon-only outline (click)="calendarDateClicked('day')">
+
+          <ion-icon name="sunny"></ion-icon>
+          <span>Day Shift</span>
+        </button>
+      </span>
+      <!-- Day Shift -->
+    </ion-col>
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="night" [ngClass]="{active: isActive('night')}" ion-button icon-only outline (click)="calendarDateClicked('night')">
+          <ion-icon name="moon"></ion-icon>
+          <span>Night Shift</span>
+        </button>
+
+      </span>
+    </ion-col>
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="hoot" [ngClass]="{active: isActive('hoot')}" ion-button icon-only outline (click)="calendarDateClicked('hoot')">
+          <ion-icon name="cloudy-night"></ion-icon>
+          <span>Hoot Shift</span>
+        </button>
+
+      </span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="secondary-buttons">
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="swing" [ngClass]="{active: isActive('doctor')}" ion-button icon-only outline (click)="calendarDateClicked('doctor')">
+          <ion-icon name="medkit"></ion-icon>
+          <span>Doctor</span>
+        </button>
+      </span>
+    </ion-col>
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="swing" [ngClass]="{active: isActive('holiday')}" ion-button icon-only outline (click)="calendarDateClicked('holiday')">
+          <ion-icon name="calendar"></ion-icon>
+          <span>Holiday</span>
+        </button>
+      </span>
+    </ion-col>
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="swing" [ngClass]="{active: isActive('meeting')}" ion-button icon-only outline (click)="calendarDateClicked('meeting')">
+          <ion-icon name="clipboard"></ion-icon>
+          <span>Meeting / Rollover</span>
+        </button>
+      </span>
+    </ion-col>
+    <ion-col class="ionic-buttons">
+      <span class="button-inner">
+        <button class="no-work" ion-button icon-only outline (click)="clearWorkDay()">
+          <ion-icon name="alert"></ion-icon>
+          <span>Clear</span>
+        </button>
+      </span>
+    </ion-col>
+    <br>
+  </ion-row>
+</ion-content>

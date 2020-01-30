@@ -1,0 +1,125 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+.select-popover {
+    font-size: 18px !important;
+    // max-width: 95% !important;
+}
+
+.popover-ios .popover-content {
+    width: 100% !important;
+    left: 0px !important;
+
+}
+
+ion-alert div[class="alert-radio-label"] {
+    font-size: 18px !important;
+    max-width: 95% !important;
+}
+
+.custom-popover .popover-content {
+    width: 60% !important;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+div tr td.monthview-selected, .toolbar-background, .toolbar-background-ios {
+    background-color: #1e51be !important;
+    color: white !important;
+}
+
+.content-ios {
+    background: #fff;
+    color: #232323;
+}
+
+.tab-button {
+    background: #fff;
+}
+
+.monthview-current {
+    background-color: #1e51beb8 !important;
+    // color: white !important;
+}
+
+.bar-button-default-ios {
+    background-color: #1e51beb8 !important;
+    color: white !important;
+}
+
+div.tabbar {
+    // &.show-tabbar {
+    //     border-top: .5px solid #1EBE9F;
+    //     border-bottom: .5px solid #1EBE9F;
+    //     border-left: .55px solid #1EBE9F;
+    //     border-right: .55px solid #1EBE9F;
+    // }
+    .tab-button:nth-child(2) {
+        border-left: 0.55px solid rgba(0, 0, 0, 0.3);
+    //     border-right: .55px solid #1EBE9F;
+    }
+}
+
+.monthview-primary-with-event {
+    background-color: #8a8686 !important;
+    color: #333 !important;
+}
+.bar-button-default-ios {
+    color: #fff !important;
+}
+.monthview-current {
+    background-color: #1e51beb8 !important;
+}
+
+.event-detail-container {
+    display: none !important;
+}
+
+calendar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.table > tbody > tr > th {
+    padding: 0px !important;
+}
+
+.table > tbody > tr > td {
+    padding: 0px !important;
+    line-height: 20px !important;
+    vertical-align: middle !important;
+}
+
+tr {
+    line-height: 6px;
+    p {
+        margin: 0;
+    }
+}
+
+.monthview-container {
+    height: auto !important;
+}
+

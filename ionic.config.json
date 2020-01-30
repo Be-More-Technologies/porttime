@@ -1,0 +1,7 @@
+{
+  "name": "myporttime",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
